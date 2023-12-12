@@ -11,6 +11,7 @@ declare module 'vue' {
     ElHeader: typeof import('element-plus/es')['ElHeader']
     ElLink: typeof import('element-plus/es')['ElLink']
     ElMain: typeof import('element-plus/es')['ElMain']
+    HeaderContent: typeof import('./src/components/header-content.vue')['default']
     NavbarWrapper: typeof import('./src/components/navbar-wrapper.vue')['default']
   }
 }
