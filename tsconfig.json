@@ -31,6 +31,12 @@
       ],
       "~/*": [
         "src/*"
+      ],
+      "~xiazi/*": [
+        "src/xiazi/*"
+      ],
+      "~library/*": [
+        "src/library/*"
       ]
     }
   },

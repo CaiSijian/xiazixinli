@@ -7,10 +7,9 @@
             </el-link>
         </div>
         <div class="content">
-            <el-menu :default-active="activeIndex" class="menu" mode="horizontal" :ellipsis="false" @select="handleSelect">
-                <el-menu-item index="2">心理网站</el-menu-item>
-                <el-menu-item index="1">心理资源</el-menu-item>
-                <el-menu-item index="0">我要反馈</el-menu-item>
+            <el-menu router :default-active="activeIndex" class="menu" mode="horizontal" :ellipsis="false"
+                @select="handleSelect">
+                <el-menu-item v-for="(v, k) in menu" :index="v">{{ k }}</el-menu-item>
             </el-menu>
         </div>
     </div>
@@ -18,13 +17,13 @@
 
 <script setup lang="ts">
 import logoURL from '~/assets/images/logo.svg'
-const activeIndex = ref('1')
-const enum menu {
-    心理资源,
-    我要反馈
+const activeIndex = ref('/')
+const menu: { [key: string]: string } = {
+    '心理网站': '/home',
+    '心理资源': '/test',
+    '我要反馈': '/ok',
 }
 const handleSelect = (key: string, keyPath: string[]) => {
-    console.log(menu['心理资源'])
     console.log(key, keyPath)
 }
 </script>

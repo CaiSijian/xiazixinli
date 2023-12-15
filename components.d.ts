@@ -16,5 +16,9 @@ declare module 'vue' {
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     HeaderContent: typeof import('./src/components/header-content.vue')['default']
     NavbarWrapper: typeof import('./src/components/navbar-wrapper.vue')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
+    Test: typeof import('./src/components/test.vue')['default']
+    Test2: typeof import('./src/components/test2.vue')['default']
   }
 }

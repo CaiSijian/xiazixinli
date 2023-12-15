@@ -4,7 +4,9 @@
       <el-header class="head">
         <header-content></header-content>
       </el-header>
-      <el-main>Main</el-main>
+      <el-main>
+        <router-view />
+      </el-main>
     </el-container>
   </div>
 </template>

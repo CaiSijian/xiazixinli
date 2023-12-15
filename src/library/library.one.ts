@@ -1,0 +1,4 @@
+function mdToHtml(text: string) {
+
+
+}
