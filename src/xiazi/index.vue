@@ -3,13 +3,13 @@
 </template>
 
 <script setup lang="ts">
-import text from './content.md?raw'
+import text from '~/xiazi/content.md?raw'
 import { parse } from 'marked'
 </script>
 
 <style scoped lang="less">
 .content {
-    padding: 4rem;
+    padding: 5rem;
 
     &>:deep(h1) {
         font-size: 2rem;

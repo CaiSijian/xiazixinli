@@ -37,6 +37,9 @@
       ],
       "~library/*": [
         "src/library/*"
+      ],
+      "~socialSupport/*": [
+        "src/socialSupport/*"
       ]
     }
   },

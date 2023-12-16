@@ -7,8 +7,7 @@
             </el-link>
         </div>
         <div class="content">
-            <el-menu router :default-active="activeIndex" class="menu" mode="horizontal" :ellipsis="false"
-                @select="handleSelect">
+            <el-menu router :default-active="activeIndex" class="menu" mode="horizontal" :ellipsis="false">
                 <el-menu-item v-for="(v, k) in menu" :index="v">{{ k }}</el-menu-item>
             </el-menu>
         </div>
@@ -20,11 +19,8 @@ import logoURL from '~/assets/images/logo.svg'
 const activeIndex = ref('/')
 const menu: { [key: string]: string } = {
     '心理网站': '/home',
-    '心理资源': '/test',
+    '心理资源': '/socialSupport',
     '我要反馈': '/ok',
-}
-const handleSelect = (key: string, keyPath: string[]) => {
-    console.log(key, keyPath)
 }
 </script>
 

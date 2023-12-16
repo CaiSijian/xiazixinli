@@ -2,8 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 export default createRouter({
     history: createWebHashHistory(),
     routes: [
-        { path: '/', redirect: '/home' },
-        { path: '/home', component: () => import('~/xiazi/content.vue') },
-        { path: '/test', component: () => import('~/components/test2.vue') },
+        { path: '/', component: () => import('~/xiazi/index.vue') },
+        { path: '/socialSupport', component: () => import('~/socialSupport/index.vue') },
     ]
 })
