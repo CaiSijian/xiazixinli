@@ -18,18 +18,15 @@
 import logoURL from '~/assets/images/logo.svg'
 const activeIndex = ref('/')
 const menu: { [key: string]: string } = {
-    '心理网站': '/home',
+    '心理网站': '/website',
     '心理资源': '/social_support',
-    '我要反馈': '/ok',
+    '我要反馈': '/feedback',
 }
 </script>
 
 <style scoped lang="less">
 .header-content {
     display: flex;
-    background-image: radial-gradient(transparent 1px, @bg-color 1px);
-    background-size: 4px 4px;
-    backdrop-filter: saturate(50%) blur(4px);
 }
 
 .logo {

@@ -38,14 +38,20 @@
       "~library/*": [
         "src/library/*"
       ],
+      "~social_support/*": [
+        "src/social_support/*"
+      ],
+      "~website/*": [
+        "src/website/*"
+      ],
+      "~feedback/*": [
+        "src/feedback/*"
+      ],
       "~socialSupport/*": [
         "src/socialSupport/*"
       ],
       "~social-support/*": [
         "src/social-support/*"
-      ],
-      "~social_support/*": [
-        "src/social_support/*"
       ]
     }
   },

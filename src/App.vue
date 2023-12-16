@@ -17,10 +17,11 @@ import headerContent from '~components/header-content.vue'
   top: 0;
   left: 0;
   height: @header-height;
-  border-bottom-color: rgb(220, 223, 230);
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
   z-index: @nav-z-index;
+  background-image: radial-gradient(transparent 1px, @bg-color 1px);
+  background-size: 4px 4px;
+  backdrop-filter: saturate(50%) blur(4px);
+  border-bottom: rgb(220, 223, 230) solid 1px;
 }
 </style>
 
