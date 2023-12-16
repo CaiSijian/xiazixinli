@@ -40,6 +40,12 @@
       ],
       "~socialSupport/*": [
         "src/socialSupport/*"
+      ],
+      "~social-support/*": [
+        "src/social-support/*"
+      ],
+      "~social_support/*": [
+        "src/social_support/*"
       ]
     }
   },

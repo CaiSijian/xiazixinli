@@ -14,10 +14,13 @@ import headerContent from '~components/header-content.vue'
 <style scoped lang="less">
 .head {
   position: sticky;
+  top: 0;
+  left: 0;
   height: @header-height;
   border-bottom-color: rgb(220, 223, 230);
   border-bottom-style: solid;
   border-bottom-width: 1px;
+  z-index: @nav-z-index;
 }
 </style>
 

@@ -3,6 +3,6 @@ export default createRouter({
     history: createWebHashHistory(),
     routes: [
         { path: '/', component: () => import('~/xiazi/index.vue') },
-        { path: '/socialSupport', component: () => import('~/socialSupport/index.vue') },
+        { path: '/social_support', component: () => import('~/social_support/index.vue') },
     ]
 })
