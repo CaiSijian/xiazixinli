@@ -12,13 +12,13 @@ import { parse } from 'marked'
     padding: 5rem;
 
     &>:deep(h1) {
-        font-size: 2rem;
+        font-size: 3rem;
         color: @text-color;
         text-align: center;
     }
 
     &>:deep(p) {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         color: @text-color-light;
         text-align: center;
     }

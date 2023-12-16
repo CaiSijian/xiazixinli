@@ -52,6 +52,9 @@
       ],
       "~social-support/*": [
         "src/social-support/*"
+      ],
+      "~data/*": [
+        "src/assets/data/*"
       ]
     }
   },
