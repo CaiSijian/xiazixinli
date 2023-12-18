@@ -7,6 +7,7 @@
 
 <script setup lang="ts">
 import text from '~/assets/data/2022启明星榜热线.json'
+
 console.log(text)
 </script>
 

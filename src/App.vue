@@ -22,6 +22,13 @@ import headerContent from '~components/header-content.vue'
   background-size: 4px 4px;
   backdrop-filter: saturate(50%) blur(4px);
   border-bottom: rgb(220, 223, 230) solid 1px;
+
+  @media screen {
+    @media (max-width: 768px) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
 }
 </style>
 

@@ -10,12 +10,25 @@
             <el-menu router class="menu" mode="horizontal" :ellipsis="false">
                 <el-menu-item v-for="(v, k) in menu" :index="v">{{ k }}</el-menu-item>
             </el-menu>
+            <el-dropdown class="menu2">
+                <li class="el-menu-item">
+                    <img :src="menuURL">
+                </li>
+                <template #dropdown>
+                    <el-dropdown-menu>
+                        <el-dropdown-item v-for="(v, k) in menu">
+                            <router-link class="el-link" :to="v">{{ k }}</router-link>
+                        </el-dropdown-item>
+                    </el-dropdown-menu>
+                </template>
+            </el-dropdown>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
 import logoURL from '~/assets/images/logo.svg'
+import menuURL from '~/assets/images/menu.svg'
 const menu: { [key: string]: string } = {
     '心理网站': '/website',
     '社会支持': '/social_support',
@@ -53,5 +66,27 @@ const menu: { [key: string]: string } = {
 
 .menu {
     height: @header-height;
+
+    img {
+        width: 1.8rem;
+    }
+
+    @media screen {
+        @media (max-width: 768px) {
+            display: none;
+        }
+    }
+}
+
+.menu2 {
+    img {
+        width: 1.8rem;
+    }
+
+    @media screen {
+        @media (min-width: 768px) {
+            display: none;
+        }
+    }
 }
 </style>
