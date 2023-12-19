@@ -19,6 +19,7 @@ declare module 'vue' {
     ElMain: typeof import('element-plus/es')['ElMain']
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
+    ElMenuItemGroup: typeof import('element-plus/es')['ElMenuItemGroup']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     HeaderContent: typeof import('./src/components/header-content.vue')['default']
     NavbarWrapper: typeof import('./src/components/navbar-wrapper.vue')['default']
