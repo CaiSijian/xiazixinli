@@ -4,12 +4,14 @@
       <el-header class="head">
         <header-content></header-content>
       </el-header>
+      <directory-item></directory-item>
       <router-view />
     </el-container>
   </div>
 </template>
 <script setup lang="ts">
 import headerContent from '~components/header-content.vue'
+import directoryItem from '~/components/directory-item.vue'
 </script>
 <style scoped lang="less">
 .head {
@@ -21,7 +23,7 @@ import headerContent from '~components/header-content.vue'
   background-image: radial-gradient(transparent 1px, @bg-color 1px);
   background-size: 4px 4px;
   backdrop-filter: saturate(50%) blur(4px);
-  border-bottom: rgb(220, 223, 230) solid 1px;
+  border-bottom: #dcdfe6 solid 1px;
   padding-left: 0px;
   padding-right: 0px;
 
