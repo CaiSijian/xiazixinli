@@ -6,55 +6,23 @@
                     <template #title>
                         <img :src="v.iconURL">
                         <span>{{ k }}</span>
-                        <img :data-title="k" class="query" @click="queryEvent" :src="queryURL">
+                        <img :data-title="k" class="query" @click="showCaptionEvent" :src="queryURL">
                     </template>
                     <el-menu-item v-for="tag in v.tags" :index="`${k}-${tag}`">{{ tag }}</el-menu-item>
                 </el-sub-menu>
             </el-menu>
         </el-aside>
         <el-main class="main">
-            <el-card v-for="hotlineValue in hotlineData" :key="hotlineValue['序号']" class="hotline-box-card">
-                <template #header>
-                    <div class="card-header">
-                        <span>{{ hotlineValue['热线名称'] }}</span>
-                    </div>
-                </template>
-                <div class="item">
-                    <span>热线号码：</span>
-                    <span class="item-value">
-                        <span v-for="v in hotlineValue['热线号码'].split('\n')" style="display: flex;">
-                            <span>{{ v }}</span>
-                            <span class="el-button" :data-phone="v" @click="copyPhoneEvent">复制</span>
-                        </span>
-                    </span>
-                </div>
-                <div class="item">
-                    <span>热线工作时间：</span>
-                    <span class="item-value">
-                        <span v-for="v in hotlineValue['热线工作时间'].split('\n')">{{ v }} </span>
-                    </span>
-                </div>
-                <div class="item">
-                    <span>地区：</span>
-                    <span>{{ hotlineValue['地区'] }}</span>
-                </div>
-                <div class="item">
-                    <span>依托机构：</span>
-                    <span class="item-value">
-                        <span v-for="v in hotlineValue['依托机构'].split('\n')">{{ v }}</span>
-                    </span>
-                </div>
-            </el-card>
+            <hotline-cards v-if="activeIndex.split('-')[0] === '心理热线'" :hotline-data="hotlineData"></hotline-cards>
         </el-main>
     </el-container>
 </template>
 
 <script setup lang="ts">
-import hotlinePhoneURL from '~/assets/images/hotline.svg'
-import appURL from '~/assets/images/app.svg'
+import hotlineCards from '~/components/hotline-cards.vue'
 import queryURL from '~/assets/images/query.svg'
 import { parse } from 'marked'
-import hotlineCaption from '~/social_support/hotline-caption.md?raw'
+import { menu } from '~/social_support/menuData'
 import hotline from '~/assets/data/2022启明星榜热线.json'
 const hotlineData = ref<{
     "序号": string,
@@ -65,22 +33,7 @@ const hotlineData = ref<{
     "依托机构": string,
     "上榜情况": string
 }[]>(hotline)
-// const currentCardData=ref<hotlineData>()
-const menu = {
-    '心理热线': {
-        disabled: false,
-        caption: hotlineCaption,
-        iconURL: hotlinePhoneURL,
-        tags: ["全部", "北京市", "天津市", "河北省", "内蒙古自治区", "吉林省", "上海市", "江苏省", "浙江省", "河南省", "湖北省", "湖南省", "广东省", "云南省", "甘肃省"],
-    },
-    '手机应用': {
-        disabled: true,
-        caption: 'ok',
-        iconURL: appURL,
-        tags: ["全部"]
-    },
-} as const
-const queryEvent = (e: MouseEvent) => {
+const showCaptionEvent = (e: MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
     const element = e.target as HTMLImageElement
@@ -113,12 +66,7 @@ const handleSelect = (key: string) => {
 
     }
 }
-function copyPhoneEvent(e: MouseEvent) {
-    const button = e.target as HTMLButtonElement
-    const phone = button.getAttribute('data-phone') as string
-    navigator.clipboard.writeText(phone)
-    ElMessage({ message: '复制成功', type: 'success', })
-}
+
 </script>
 
 <style scoped lang="less">
@@ -128,42 +76,27 @@ function copyPhoneEvent(e: MouseEvent) {
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
+    transform: translate(-100%);
+    transition: transform .5s;
+
+    @media screen {
+        @media (min-width: @global-breakpoint) {
+            transform: translate(0);
+        }
+    }
 }
 
 .main {
     display: flex;
     flex-flow: row wrap;
-    padding-left: @aside-width + 20px;
+    padding-left: 20px;
     justify-content: flex-start;
-    flex-basis: max-content;
-}
+    transition: padding .5s;
 
-.hotline-box-card {
-    margin-left: 8px;
-    margin-bottom: 12px;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.12);
-
-    .item {
-        display: flex;
-        margin-bottom: 1rem;
-
-        .item-value {
-            display: flex;
-            flex-direction: column;
-
-            &>span {
-                margin-bottom: 5px;
-            }
-
-            .el-button {
-                margin-left: 10px;
-                height: 21px;
-            }
+    @media screen {
+        @media (min-width: @global-breakpoint) {
+            padding-left: @aside-width + 20px;
         }
-    }
-
-    .item:last-child {
-        margin-bottom: 0;
     }
 }
 

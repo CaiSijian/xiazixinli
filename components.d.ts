@@ -24,6 +24,7 @@ declare module 'vue' {
     ElMenuItemGroup: typeof import('element-plus/es')['ElMenuItemGroup']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     HeaderContent: typeof import('./src/components/header-content.vue')['default']
+    HotlineCards: typeof import('./src/components/hotline-cards.vue')['default']
     NavbarWrapper: typeof import('./src/components/navbar-wrapper.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

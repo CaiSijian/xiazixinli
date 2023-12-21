@@ -72,7 +72,7 @@ const menu: { [key: string]: string } = {
     }
 
     @media screen {
-        @media (max-width: 768px) {
+        @media (max-width: @global-breakpoint) {
             display: none;
         }
     }
@@ -83,8 +83,12 @@ const menu: { [key: string]: string } = {
         width: 1.8rem;
     }
 
+    li {
+        height: @header-height;
+    }
+
     @media screen {
-        @media (min-width: 768px) {
+        @media (min-width: @global-breakpoint) {
             display: none;
         }
     }

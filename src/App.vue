@@ -13,7 +13,7 @@ import headerContent from '~components/header-content.vue'
 </script>
 <style scoped lang="less">
 .head {
-  position: sticky;
+  position: static;
   top: 0;
   left: 0;
   height: @header-height;
@@ -22,11 +22,14 @@ import headerContent from '~components/header-content.vue'
   background-size: 4px 4px;
   backdrop-filter: saturate(50%) blur(4px);
   border-bottom: rgb(220, 223, 230) solid 1px;
+  padding-left: 0px;
+  padding-right: 0px;
 
   @media screen {
-    @media (max-width: 768px) {
-      padding-left: 0;
-      padding-right: 0;
+    @media (min-width: @global-breakpoint ) {
+      position: sticky;
+      padding-left: 20px;
+      padding-right: 20px;
     }
   }
 }
