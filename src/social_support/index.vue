@@ -49,6 +49,11 @@ const showCaptionEvent = (e: MouseEvent) => {
 }
 const activeIndex = ref('心理热线-全部')
 const handleSelect = (key: string) => {
+    if (window.innerWidth < 960) {
+        const aside = document.querySelector('.aside') as HTMLDivElement
+        aside.classList.remove('asideShow')
+    }
+
     type menuT = typeof menu
     type tagsT =
         | menuT['心理热线']['tags'][number]
@@ -72,16 +77,18 @@ const handleSelect = (key: string) => {
 <style scoped lang="less">
 .aside {
     position: fixed;
+    top: 50px;
     width: @aside-width;
-    height: 100%;
+    height: 100vh+5px;
     overflow-y: auto;
     overflow-x: hidden;
-    transform: translate(-100%);
     transition: transform .5s;
+    transform: translate(-100%);
 
     @media screen {
         @media (min-width: @global-breakpoint) {
-            transform: translate(0);
+            transform: translate(0px);
+            height: 100%;
         }
     }
 }
