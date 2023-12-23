@@ -77,19 +77,36 @@ const handleSelect = (key: string) => {
 <style scoped lang="less">
 .aside {
     position: fixed;
-    top: 50px;
+    top: 0px;
     width: @aside-width;
-    height: 100vh+5px;
-    overflow-y: auto;
-    overflow-x: hidden;
+    height: 100%;
     transition: transform .5s;
     transform: translate(-100%);
+    z-index: 13;
 
     @media screen {
         @media (min-width: @global-breakpoint) {
+            top: 55px;
+            height: calc(100% - 55px);
             transform: translate(0px);
-            height: 100%;
+            z-index: auto;
         }
+    }
+}
+
+.menu {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    img {
+        width: 1.8rem;
+        padding: 0 10px;
+    }
+
+    .query {
+        width: 1.5rem;
+        margin-left: auto;
     }
 }
 
@@ -104,21 +121,6 @@ const handleSelect = (key: string) => {
         @media (min-width: @global-breakpoint) {
             padding-left: @aside-width + 20px;
         }
-    }
-}
-
-.menu {
-    height: 100%;
-
-
-    img {
-        width: 1.8rem;
-        padding: 0 10px;
-    }
-
-    .query {
-        width: 1.5rem;
-        margin-left: auto;
     }
 }
 </style>

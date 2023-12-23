@@ -56,6 +56,7 @@ function handleToTop() {
     border-bottom: #dcdfe6 solid 1px;
     background-color: @bg-color;
     overflow: hidden;
+    box-sizing: border-box;
 
     &>div {
         cursor: pointer;
