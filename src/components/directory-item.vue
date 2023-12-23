@@ -33,12 +33,15 @@ function handleAside() {
 function handleToTop() {
     window.scroll(0, 0)
     // 平滑滚动怪怪的 犹豫要不要
-    // let intervalNum = setInterval(() => {
-    //     const current = window.scrollY
-    //     const step = (0 - current) / 10
-    //     window.scroll(0, current + step)
-    //     if (current <= 0.0000001) clearInterval(intervalNum)
-    // }, 30)
+    let intervalNum = setInterval(() => {
+        const current = document.body.scrollTop
+        let step = (0 - current) / 20
+        step = step > 0 ? Math.ceil(step) : Math.floor(step)
+        console.log(current + step, current <= 0.0000001)
+        // if (current + step < 30) debugger
+        window.scroll(0, current + step)
+        if (current <= 0.0000001) clearInterval(intervalNum)
+    }, 15)
 }
 </script>
 

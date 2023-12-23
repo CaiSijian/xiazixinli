@@ -55,7 +55,8 @@ function copyPhoneEvent(e: MouseEvent) {
 
 <style scoped>
 .hotline-box-card {
-    margin-left: 8px;
+    margin-left: 4px;
+    margin-right: 8px;
     margin-bottom: 12px;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.12);
 
