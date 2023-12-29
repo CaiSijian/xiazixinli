@@ -3,8 +3,7 @@ export default createRouter({
     history: createWebHashHistory(),
     routes: [
         { path: '/', component: () => import('~/xiazi/index.vue') },
-        { path: '/website', component: () => import('~/website/index.vue') },
-        { path: '/social_support', component: () => import('~/casket/index.vue') },
+        { path: '/resource ', component: () => import('~/resource/index.vue') },
         { path: '/feedback', component: () => import('~/feedback/index.vue') },
     ]
 })

@@ -6,7 +6,7 @@
                     <template #title>
                         <img :src="v.iconURL">
                         <span>{{ k }}</span>
-                        <img :data-title="k" class="query" @click="showCaptionEvent" :src="queryURL">
+                        <img :data-title="k" class="query" @click="showCaption_clickEvent" :src="questionMarkURL">
                     </template>
                     <el-menu-item v-for="tag in v.tags" :index="`${k}-${tag}`">{{ tag }}</el-menu-item>
                 </el-sub-menu>
@@ -20,10 +20,10 @@
 
 <script setup lang="ts">
 import hotlineCards from '~/components/hotline-cards.vue'
-import hotline from '~/casket/data/2022启明星榜热线.json'
-import queryURL from '~/assets/images/query.svg'
+import hotlines from '~/resource/data/2022启明星榜热线.json'
+import psychologicalWebsites from '~/resource/data/PsychologicalWebsites.json'
 import { parse } from 'marked'
-import { menu } from '~/casket/menuData'
+import { menu, questionMarkURL } from '~/resource/menuData'
 const hotlineData = ref<{
     "序号": string,
     "地区": string,
@@ -32,8 +32,15 @@ const hotlineData = ref<{
     "热线工作时间": string,
     "依托机构": string,
     "上榜情况": string
-}[]>(hotline)
-const showCaptionEvent = (e: MouseEvent) => {
+}[]>(hotlines)
+const psychologicalWebsiteData = ref<{
+    "名称": string,
+    "标签": string,
+    "主页": string,
+    "简介": string,
+    "推荐原因": string,
+}[]>(psychologicalWebsites)
+const showCaption_clickEvent = (e: MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
     const element = e.target as HTMLImageElement
@@ -47,7 +54,7 @@ const showCaptionEvent = (e: MouseEvent) => {
         showConfirmButton: false,
     }).catch(() => { })
 }
-const activeIndex = ref('心理热线-全部')
+const activeIndex = ref('心理网站-全部')
 const handleSelect = (key: string) => {
     if (window.innerWidth < 960) {
         const aside = document.querySelector('.aside') as HTMLDivElement
@@ -61,12 +68,16 @@ const handleSelect = (key: string) => {
     const menuArr = key.split('-') as [keyof menuT, tagsT]
     switch (menuArr[0]) {
         case '心理热线':
-            if (menuArr[1] === '全部') hotlineData.value = hotline
-            else hotlineData.value = hotline.filter((item) => item['地区'] === menuArr[1])
+            if (menuArr[1] === '全部') hotlineData.value = hotlines
+            else hotlineData.value = hotlines.filter((item) => item['地区'] === menuArr[1])
+            break
+        case '心理网站':
+            if (menuArr[1] === '全部') hotlineData.value = hotlines
+            // else hotlineData.value = hotlines.filter((item) => item[''] === menuArr[1])
             break
         case '手机应用':
-            if (menuArr[1] === '全部') hotlineData.value = hotline
-            else hotlineData.value = hotline.filter((item) => item['地区'] === menuArr[1])
+            if (menuArr[1] === '全部') hotlineData.value = hotlines
+            else hotlineData.value = hotlines.filter((item) => item['地区'] === menuArr[1])
             break
 
     }

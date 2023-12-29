@@ -30,8 +30,7 @@
 import logoURL from '~/assets/images/logo.svg'
 import menuURL from '~/assets/images/menu.svg'
 const menu: { [key: string]: string } = {
-    // '心理网站': '/website',
-    '匣子': '/casket ',
+    '心理资源': '/resource ',
     '我要反馈': '/feedback',
 }
 </script>
