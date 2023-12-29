@@ -20,10 +20,10 @@
 
 <script setup lang="ts">
 import hotlineCards from '~/components/hotline-cards.vue'
+import hotline from '~/casket/data/2022启明星榜热线.json'
 import queryURL from '~/assets/images/query.svg'
 import { parse } from 'marked'
-import { menu } from '~/social_support/menuData'
-import hotline from '~/assets/data/2022启明星榜热线.json'
+import { menu } from '~/casket/menuData'
 const hotlineData = ref<{
     "序号": string,
     "地区": string,
