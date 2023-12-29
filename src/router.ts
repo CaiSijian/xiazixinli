@@ -1,9 +1,12 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import xiazi from '~/xiazi/index.vue'
+import resource from '~/resource/index.vue'
+import feedback from '~/feedback/index.vue'
 export default createRouter({
     history: createWebHashHistory(),
     routes: [
-        { path: '/', component: () => import('~/xiazi/index.vue') },
-        { path: '/resource ', component: () => import('~/resource/index.vue') },
-        { path: '/feedback', component: () => import('~/feedback/index.vue') },
+        { path: '/', component: xiazi },
+        { path: '/resource', component: resource },
+        { path: '/feedback', component: feedback },
     ]
 })

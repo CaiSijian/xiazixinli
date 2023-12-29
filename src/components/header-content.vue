@@ -7,7 +7,7 @@
             </el-link>
         </div>
         <div class="content">
-            <el-menu router class="menu" mode="horizontal" :ellipsis="false">
+            <el-menu router :default-active="activeIndex" class="menu" mode="horizontal" :ellipsis="false">
                 <el-menu-item v-for="(v, k) in menu" :index="v">{{ k }}</el-menu-item>
             </el-menu>
             <el-dropdown class="menu2">
@@ -29,8 +29,10 @@
 <script setup lang="ts">
 import logoURL from '~/assets/images/logo.svg'
 import menuURL from '~/assets/images/menu.svg'
+/* 刷新页面的时候，激活选项卡 */
+const activeIndex = ref(location.href.match(/(?<=#).*\/?/)?.[0])
 const menu: { [key: string]: string } = {
-    '心理资源': '/resource ',
+    '心理资源': '/resource',
     '我要反馈': '/feedback',
 }
 </script>

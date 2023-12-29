@@ -1,9 +1,11 @@
 import hotlineCaption from '~/resource/hotline-caption.md?raw'
-import appCaption from '~/resource/app-caption.md?raw'
-import websiteCaption from '~/resource/website-caption.md?raw'
 import hotlinePhoneURL from '~/assets/images/hotline.svg'
+import appCaption from '~/resource/app-caption.md?raw'
 import appURL from '~/assets/images/app.svg'
+import websites from '~/resource/data/PsychologicalWebsites.json'
+import websiteCaption from '~/resource/website-caption.md?raw'
 import websiteURL from '~/assets/images/website.svg'
+const websiteTags = new Set(['全部', ...websites.map((obj) => obj['标签'].split('|')).flat(Infinity)])
 export { default as questionMarkURL } from '~/assets/images/question-mark.svg'
 export const menu = {
     '心理热线': {
@@ -16,7 +18,7 @@ export const menu = {
         disabled: false,
         caption: websiteCaption,
         iconURL: websiteURL,
-        tags: ["全部"]
+        tags: websiteTags
     },
     '手机应用': {
         disabled: false,

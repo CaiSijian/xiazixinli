@@ -1,15 +1,15 @@
 <template>
-    <el-card v-for="hotlineValue in hotlineData" :key="hotlineValue['序号']" class="hotline-box-card">
+    <el-card v-for="hotline in hotlineData" :key="hotline['序号']" class="hotline-box-card">
         <template #header>
             <div class="card-header">
-                <span>{{ hotlineValue['热线名称'] }}</span>
+                <span>{{ hotline['热线名称'] }}</span>
             </div>
         </template>
         <div class="item">
             <span>热线号码：</span>
             <span class="item-value">
-                <span v-for="v in hotlineValue['热线号码'].split('\n')" style="display: flex;">
-                    <span>{{ v }}</span>
+                <span v-for="v in hotline['热线号码'].split('\n')" style="display: flex;">
+                    <span :data-phone="v" @click="copyPhoneEvent">{{ v }}</span>
                     <span class="el-button" :data-phone="v" @click="copyPhoneEvent">复制</span>
                 </span>
             </span>
@@ -17,17 +17,17 @@
         <div class="item">
             <span>热线工作时间：</span>
             <span class="item-value">
-                <span v-for="v in hotlineValue['热线工作时间'].split('\n')">{{ v }} </span>
+                <span v-for="v in hotline['热线工作时间'].split('\n')">{{ v }} </span>
             </span>
         </div>
         <div class="item">
             <span>地区：</span>
-            <span>{{ hotlineValue['地区'] }}</span>
+            <span>{{ hotline['地区'] }}</span>
         </div>
         <div class="item">
             <span>依托机构：</span>
             <span class="item-value">
-                <span v-for="v in hotlineValue['依托机构'].split('\n')">{{ v }}</span>
+                <span v-for="v in hotline['依托机构'].split('\n')">{{ v }}</span>
             </span>
         </div>
     </el-card>

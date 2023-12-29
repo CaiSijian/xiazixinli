@@ -14,6 +14,9 @@
         </el-aside>
         <el-main class="main">
             <hotline-cards v-if="activeIndex.split('-')[0] === '心理热线'" :hotline-data="hotlineData"></hotline-cards>
+            <website-cards v-else-if="activeIndex.split('-')[0] === '心理网站'"
+                :website-data="psychologicalWebsiteData"></website-cards>
+            <div v-else>这里空空如也</div>
         </el-main>
     </el-container>
 </template>
@@ -21,25 +24,12 @@
 <script setup lang="ts">
 import hotlineCards from '~/components/hotline-cards.vue'
 import hotlines from '~/resource/data/2022启明星榜热线.json'
-import psychologicalWebsites from '~/resource/data/PsychologicalWebsites.json'
+import websiteCards from '~/components/website-cards.vue'
+import websites from '~/resource/data/PsychologicalWebsites.json'
 import { parse } from 'marked'
 import { menu, questionMarkURL } from '~/resource/menuData'
-const hotlineData = ref<{
-    "序号": string,
-    "地区": string,
-    "热线名称": string,
-    "热线号码": string,
-    "热线工作时间": string,
-    "依托机构": string,
-    "上榜情况": string
-}[]>(hotlines)
-const psychologicalWebsiteData = ref<{
-    "名称": string,
-    "标签": string,
-    "主页": string,
-    "简介": string,
-    "推荐原因": string,
-}[]>(psychologicalWebsites)
+const hotlineData = ref(hotlines)
+const psychologicalWebsiteData = ref(websites)
 const showCaption_clickEvent = (e: MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
@@ -56,6 +46,7 @@ const showCaption_clickEvent = (e: MouseEvent) => {
 }
 const activeIndex = ref('心理网站-全部')
 const handleSelect = (key: string) => {
+    activeIndex.value = key
     if (window.innerWidth < 960) {
         const aside = document.querySelector('.aside') as HTMLDivElement
         aside.classList.remove('asideShow')
@@ -72,8 +63,8 @@ const handleSelect = (key: string) => {
             else hotlineData.value = hotlines.filter((item) => item['地区'] === menuArr[1])
             break
         case '心理网站':
-            if (menuArr[1] === '全部') hotlineData.value = hotlines
-            // else hotlineData.value = hotlines.filter((item) => item[''] === menuArr[1])
+            if (menuArr[1] === '全部') psychologicalWebsiteData.value = websites
+            else psychologicalWebsiteData.value = websites.filter((item) => item['标签'].includes(menuArr[1]))
             break
         case '手机应用':
             if (menuArr[1] === '全部') hotlineData.value = hotlines
