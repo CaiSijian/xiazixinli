@@ -1,30 +1,32 @@
 <template>
-    <el-card v-for="website in websiteData" :key="website['序号']" class="card">
+    <el-card v-for="app in appData" :key="app['序号']" class="card">
         <template #header>
             <div class="card-header">
-                <span>{{ website['名称'] }}</span>
+                <span>{{ app['名称'] }}</span>
             </div>
         </template>
-        <div class="item">
-            <span>主页：</span>
-            <el-link :href="website['主页']" target="_blank">{{ getHome(website['主页']) }}</el-link>
-        </div>
-        <div v-if="website['简介'] !== ''" class="item">
+        <div v-if="app['简介'] !== ''" class="item">
             <span class="two-words">简介：</span>
             <span class="item-value">
-                <span v-for="v in website['简介'].split('\n')">{{ v }} </span>
+                <span v-for="v in app['简介'].split('\n')">{{ v }} </span>
             </span>
         </div>
-        <div v-if="website['标签'] !== ''" class="item">
+        <div class="item">
+            <span class="two-words">下载方式：</span>
+            <span class="item-value">
+                <span v-for="v in app['下载方式'].split('\n')">{{ v }} </span>
+            </span>
+        </div>
+        <div v-if="app['标签'] !== ''" class="item">
             <span class="two-words">标签：</span>
             <span class="item-tag">
-                <span v-for="v in website['标签'].split('|')">{{ v }} </span>
+                <span v-for="v in app['标签'].split('|')">{{ v }} </span>
             </span>
         </div>
         <div class="item">
             <span class="four-words">推荐原因：</span>
             <span class="item-value">
-                <span v-for="v in website['推荐原因'].split('\n')">{{ v }}</span>
+                <span v-for="v in app['推荐原因'].split('\n')">{{ v }}</span>
             </span>
         </div>
     </el-card>
@@ -32,18 +34,16 @@
 
 <script setup lang="ts">
 defineProps<{
-    websiteData?: {
-        "序号": string,
-        "名称": string,
-        "标签": string,
-        "主页": string,
-        "简介": string,
-        "推荐原因": string,
+    appData?: {
+        序号: string
+        名称: string
+        标签: string
+        简介: string
+        开发者: string
+        下载方式: string
+        推荐原因: string
     }[]
 }>()
-const getHome = (x: string) => {
-    return new URL(x).host
-}
 </script>
 
 <style scoped>

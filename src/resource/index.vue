@@ -14,8 +14,8 @@
         </el-aside>
         <el-main class="main">
             <hotline-cards v-if="activeIndex.split('-')[0] === '心理热线'" :hotline-data="hotlineData"></hotline-cards>
-            <website-cards v-else-if="activeIndex.split('-')[0] === '心理网站'"
-                :website-data="psychologicalWebsiteData"></website-cards>
+            <website-cards v-else-if="activeIndex.split('-')[0] === '心理网站'" :website-data="websiteData"></website-cards>
+            <app-cards v-else-if="activeIndex.split('-')[0] === '手机应用'" :app-data="appData"></app-cards>
             <div v-else>这里空空如也</div>
         </el-main>
     </el-container>
@@ -23,13 +23,17 @@
 
 <script setup lang="ts">
 import hotlineCards from '~/components/hotline-cards.vue'
-import hotlines from '~/resource/data/2022启明星榜热线.json'
 import websiteCards from '~/components/website-cards.vue'
-import websites from '~/resource/data/PsychologicalWebsites.json'
+import appCards from '~/components/app-cards.vue'
+
+import hotlines from '~/resource/data/2022启明星榜热线.json'
+import websites from '~/resource/data/websites.json'
+import apps from '~/resource/data/apps.json'
 import { parse } from 'marked'
 import { menu, questionMarkURL } from '~/resource/menuData'
 const hotlineData = ref(hotlines)
-const psychologicalWebsiteData = ref(websites)
+const websiteData = ref(websites)
+const appData = ref(apps)
 const showCaption_clickEvent = (e: MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
@@ -44,7 +48,7 @@ const showCaption_clickEvent = (e: MouseEvent) => {
         showConfirmButton: false,
     }).catch(() => { })
 }
-const activeIndex = ref('心理网站-全部')
+const activeIndex = ref('心理热线-全部')
 const handleSelect = (key: string) => {
     activeIndex.value = key
     if (window.innerWidth < 960) {
@@ -63,12 +67,12 @@ const handleSelect = (key: string) => {
             else hotlineData.value = hotlines.filter((item) => item['地区'] === menuArr[1])
             break
         case '心理网站':
-            if (menuArr[1] === '全部') psychologicalWebsiteData.value = websites
-            else psychologicalWebsiteData.value = websites.filter((item) => item['标签'].includes(menuArr[1]))
+            if (menuArr[1] === '全部') websiteData.value = websites
+            else websiteData.value = websites.filter((item) => item['标签'].includes(menuArr[1]))
             break
         case '手机应用':
-            if (menuArr[1] === '全部') hotlineData.value = hotlines
-            else hotlineData.value = hotlines.filter((item) => item['地区'] === menuArr[1])
+            if (menuArr[1] === '全部') appData.value = apps
+            else appData.value = apps.filter((item) => item['标签'].includes(menuArr[1]))
             break
 
     }

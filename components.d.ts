@@ -7,7 +7,8 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    copy: typeof import('./src/components/hotline-cards copy.vue')['default']
+    AppCards: typeof import('./src/components/app-cards.vue')['default']
+    copy: typeof import('./src/components/website-cards copy.vue')['default']
     DirectoryItem: typeof import('./src/components/directory-item.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElCard: typeof import('element-plus/es')['ElCard']
