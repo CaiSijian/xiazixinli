@@ -1,5 +1,5 @@
 <template>
-    <iframe src="https://f.kdocs.cn/g/zxodyZBU/" frameborder="0"></iframe>
+    <iframe src="https://f.kdocs.cn/g/fxvpcO9p/" frameborder="0"></iframe>
 </template>
 
 <script setup lang="ts">
