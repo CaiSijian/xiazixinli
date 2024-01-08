@@ -1,6 +1,6 @@
 <template>
     <div class="directory">
-        <div @click="handleAside">
+        <div @click.capture="handleAside">
             <img :src="directoryURL">
             <span>目录</span>
         </div>

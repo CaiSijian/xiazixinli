@@ -77,7 +77,15 @@ const handleSelect = (key: string) => {
 
     }
 }
-
+/* 移动端 点击非aside部分 收纳aside部分 */
+document.addEventListener('click', (event: Event) => {
+    const clickElement = event.target as HTMLDivElement
+    const aside = document.querySelector('.aside') as HTMLDivElement
+    if (!aside.contains(clickElement)) {
+        const toggle = aside.classList.toString().includes('asideShow')
+        toggle && aside.classList.remove('asideShow')
+    }
+}, true)
 </script>
 
 <style scoped lang="less">
