@@ -11,6 +11,7 @@ declare module 'vue' {
     copy: typeof import('./src/components/website-cards copy.vue')['default']
     DirectoryItem: typeof import('./src/components/directory-item.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
+    ElBacktop: typeof import('element-plus/es')['ElBacktop']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElDropdown: typeof import('element-plus/es')['ElDropdown']
