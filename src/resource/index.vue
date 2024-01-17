@@ -81,7 +81,7 @@ const handleSelect = (key: string) => {
 document.addEventListener('click', (event: Event) => {
     const clickElement = event.target as HTMLDivElement
     const aside = document.querySelector('.aside') as HTMLDivElement
-    if (!aside.contains(clickElement)) {
+    if (!aside?.contains(clickElement)) {
         const toggle = aside.classList.toString().includes('asideShow')
         toggle && aside.classList.remove('asideShow')
     }
