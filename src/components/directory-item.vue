@@ -30,8 +30,9 @@ function handleAside() {
     justify-content: space-between;
     align-items: center;
     height: 49px;
-    margin-left: 8px;
-    margin-right: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+
     font-size: 1.2rem;
     border-bottom: #dcdfe6 solid 1px;
     background-color: @bg-color;
@@ -45,6 +46,7 @@ function handleAside() {
     &>div:nth-child(1) {
         display: flex;
         align-items: center;
+
 
         img {
             width: 1.8rem;
@@ -63,6 +65,7 @@ function handleAside() {
         font-size: 16px;
         box-shadow: none;
         border-radius: 25%;
+
 
         .el-backtop__icon {
             color: #303133;
