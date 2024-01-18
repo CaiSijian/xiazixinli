@@ -1,7 +1,7 @@
 <template>
     <div class="header-content">
         <div class="logo">
-            <el-link href="/xiazixinli/" :underline="false">
+            <el-link href="https://caisijian.gitee.io/xiazixinli/" :underline="false">
                 <img :src="logoURL">
                 <span>匣子心理</span>
             </el-link>
