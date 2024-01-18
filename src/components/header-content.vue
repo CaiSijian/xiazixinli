@@ -1,7 +1,7 @@
 <template>
     <div class="header-content">
         <div class="logo">
-            <el-link href="/" :underline="false">
+            <el-link href="/xiazixinli/" :underline="false">
                 <img :src="logoURL">
                 <span>匣子心理</span>
             </el-link>
