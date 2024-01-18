@@ -4,14 +4,12 @@
       <el-header class="head">
         <header-content></header-content>
       </el-header>
-      <directory-item></directory-item>
       <router-view />
     </el-container>
   </div>
 </template>
 <script setup lang="ts">
 import headerContent from '~components/header-content.vue'
-import directoryItem from '~/components/directory-item.vue'
 </script>
 <style scoped lang="less">
 .head {

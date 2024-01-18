@@ -1,4 +1,5 @@
 <template>
+    <directory-item></directory-item>
     <el-container>
         <el-aside class="aside">
             <el-menu class="menu" :default-active="activeIndex" @select="handleSelect">
@@ -22,6 +23,8 @@
 </template>
 
 <script setup lang="ts">
+import directoryItem from '~/components/directory-item.vue'
+
 import hotlineCards from '~/components/hotline-cards.vue'
 import websiteCards from '~/components/website-cards.vue'
 import appCards from '~/components/app-cards.vue'
