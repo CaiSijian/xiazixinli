@@ -34,6 +34,7 @@
 </template>
 
 <script setup lang="ts">
+import { ElMessage } from 'element-plus'
 defineProps<{
     hotlineData?: {
         "序号": string,

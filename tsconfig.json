@@ -55,8 +55,7 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
-    "src/**/*.vue",
-    "auto-imports.d.ts"
+    "src/**/*.vue"
   ],
   "references": [
     {

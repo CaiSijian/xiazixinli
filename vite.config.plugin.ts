@@ -1,23 +1,42 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { ViteAliases } from 'vite-aliases'
+import cdn from 'vite-plugin-cdn-import'
 
 export default defineConfig({
     plugins: [
         vue(),
-        AutoImport({
-            imports: ['vue', 'vue-router'],
-            resolvers: [ElementPlusResolver()],
-            dts: 'auto-imports.d.ts',
-            eslintrc: {
-                enabled: false,
-                // 1、改为true用于生成eslint配置。2、生成后改回false，避免重复生成消耗
-            }
+        cdn({
+            generateScriptTag(_name, _scriptUrl) {
+                return {
+                    attrs: { defer: '' }
+                }
+            },
+            modules: [
+                {
+                    name: 'vue',
+                    var: 'Vue',
+                    path: 'dist/vue.global.prod.js',
+                },
+                {
+                    name: 'element-plus',
+                    var: 'ElementPlus',
+                    path: 'dist/index.full.min.js',
+                    css: 'dist/index.css',
+                },
+                {
+                    name: 'vue-router',
+                    var: 'VueRouter',
+                    path: 'dist/vue-router.global.prod.js',
+                },
+                {
+                    name: 'marked',
+                    var: 'marked',
+                    path: 'marked.min.js',
+                },
+            ],
+            prodUrl: 'https://unpkg.com/{name}@{version}/{path}',
         }),
-        Components({ resolvers: [ElementPlusResolver()], }),
         ViteAliases(),
     ],
 })

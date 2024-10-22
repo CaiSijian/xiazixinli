@@ -27,6 +27,7 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import logoURL from '~/assets/images/logo.svg'
 import menuURL from '~/assets/images/menu.svg'
 /* 刷新页面的时候，激活选项卡 */

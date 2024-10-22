@@ -1,7 +1,9 @@
 import { createApp } from 'vue'
-import './style.less'
 import App from './App.vue'
 import router from './router'
+import ElementPlus from 'element-plus'
+import './style.less'
 const app = createApp(App)
+app.use(ElementPlus)
 app.use(router)
 app.mount('#app')

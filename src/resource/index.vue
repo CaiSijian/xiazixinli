@@ -23,6 +23,9 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+import { ElMessageBox } from 'element-plus'
+import { parse } from 'marked'
 import directoryItem from '~/components/directory-item.vue'
 
 import hotlineCards from '~/components/hotline-cards.vue'
@@ -32,7 +35,6 @@ import appCards from '~/components/app-cards.vue'
 import hotlines from '~/resource/data/2022启明星榜热线.json'
 import websites from '~/resource/data/websites.json'
 import apps from '~/resource/data/apps.json'
-import { parse } from 'marked'
 import { menu, questionMarkURL } from '~/resource/menuData'
 const hotlineData = ref(hotlines)
 const websiteData = ref(websites)
