@@ -49,6 +49,9 @@
       ],
       "~resource/*": [
         "src/resource/*"
+      ],
+      "~measurement/*": [
+        "src/measurement/*"
       ]
     }
   },

@@ -3,7 +3,7 @@
     <el-container>
         <el-aside class="aside">
             <el-menu class="menu" :default-active="activeIndex" @select="handleSelect">
-                <el-sub-menu v-for="(v, k) in menu" :index="`${k}`" :disabled="v.disabled">
+                <el-sub-menu v-for="(v, k) in menus" :index="`${k}`" :disabled="v.disabled">
                     <template #title>
                         <img :src="v.iconURL">
                         <span>{{ k }}</span>
@@ -14,16 +14,13 @@
             </el-menu>
         </el-aside>
         <el-main class="main">
-            <hotline-cards v-if="activeIndex.split('-')[0] === '心理热线'" :hotline-data="hotlineData"></hotline-cards>
-            <website-cards v-else-if="activeIndex.split('-')[0] === '心理网站'" :website-data="websiteData"></website-cards>
-            <app-cards v-else-if="activeIndex.split('-')[0] === '手机应用'" :app-data="appData"></app-cards>
-            <div v-else>这里空空如也</div>
+            <component :is="components[activeIndex_class]" :data="components_data[activeIndex_class]"></component>
         </el-main>
     </el-container>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { ElMessageBox } from 'element-plus'
 import { parse } from 'marked'
 import directoryItem from '~/components/directory-item.vue'
@@ -35,7 +32,7 @@ import appCards from '~/components/app-cards.vue'
 import hotlines from '~/resource/data/2022启明星榜热线.json'
 import websites from '~/resource/data/websites.json'
 import apps from '~/resource/data/apps.json'
-import { menu, questionMarkURL } from '~/resource/menuData'
+import { menus, questionMarkURL } from '~/resource/menuData'
 const hotlineData = ref(hotlines)
 const websiteData = ref(websites)
 const appData = ref(apps)
@@ -43,8 +40,8 @@ const showCaption_clickEvent = (e: MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
     const element = e.target as HTMLImageElement
-    const title = element.getAttribute('data-title') as keyof typeof menu
-    const caption = menu[title].caption
+    const title = element.getAttribute('data-title') as keyof typeof menus
+    const caption = menus[title].caption
     const htmlStr = parse(caption) as string
     ElMessageBox.alert(htmlStr, {
         dangerouslyUseHTMLString: true,
@@ -54,18 +51,29 @@ const showCaption_clickEvent = (e: MouseEvent) => {
     }).catch(() => { })
 }
 const activeIndex = ref('心理热线-全部')
+const activeIndex_class = computed(() => activeIndex.value.split('-')[0] as keyof menusT)
+const components = {
+    '心理热线': hotlineCards,
+    '心理网站': websiteCards,
+    '手机应用': appCards,
+}
+const components_data = {
+    '心理热线': hotlines,
+    '心理网站': websites,
+    '手机应用': apps,
+}
+
+type menusT = typeof menus
+type tagsT =
+    | menusT['心理热线']['tags'][number]
+    | menusT['手机应用']['tags'][number]
 const handleSelect = (key: string) => {
     activeIndex.value = key
     if (window.innerWidth < 960) {
         const aside = document.querySelector('.aside') as HTMLDivElement
         aside.classList.remove('asideShow')
     }
-
-    type menuT = typeof menu
-    type tagsT =
-        | menuT['心理热线']['tags'][number]
-        | menuT['手机应用']['tags'][number]
-    const menuArr = key.split('-') as [keyof menuT, tagsT]
+    const menuArr = key.split('-') as [keyof menusT, tagsT]
     switch (menuArr[0]) {
         case '心理热线':
             if (menuArr[1] === '全部') hotlineData.value = hotlines

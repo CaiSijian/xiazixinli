@@ -1,5 +1,5 @@
 <template>
-    <el-card v-for="app in appData" :key="app['序号']" class="card">
+    <el-card v-for="app in data" :key="app['序号']" class="card">
         <template #header>
             <div class="card-header">
                 <span>{{ app['名称'] }}</span>
@@ -34,7 +34,7 @@
 
 <script setup lang="ts">
 defineProps<{
-    appData?: {
+    data?: {
         序号: string
         名称: string
         标签: string

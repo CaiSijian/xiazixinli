@@ -1,5 +1,5 @@
 <template>
-    <el-card v-for="hotline in hotlineData" :key="hotline['序号']" class="hotline-box-card">
+    <el-card v-for="hotline in data" :key="hotline['序号']" class="hotline-box-card">
         <template #header>
             <div class="card-header">
                 <span>{{ hotline['热线名称'] }}</span>
@@ -36,7 +36,7 @@
 <script setup lang="ts">
 import { ElMessage } from 'element-plus'
 defineProps<{
-    hotlineData?: {
+    data?: {
         "序号": string,
         "地区": string,
         "热线名称": string,

@@ -1,11 +1,11 @@
-<template>
-    <div v-html="parse(text)" class="content"></div>
-</template>
-
 <script setup lang="ts">
 import text from '~/xiazi/content.md?raw'
 import { parse } from 'marked'
 </script>
+
+<template>
+    <div v-html="parse(text)" class="content"></div>
+</template>
 
 <style scoped lang="less">
 .content {

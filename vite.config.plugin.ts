@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { ViteAliases } from 'vite-aliases'
 import cdn from 'vite-plugin-cdn-import'
-
+import { viteExternalsPlugin } from 'vite-plugin-externals'
 export default defineConfig({
     plugins: [
         vue(),
@@ -37,6 +37,14 @@ export default defineConfig({
             ],
             prodUrl: 'https://unpkg.com/{name}@{version}/{path}',
         }),
+        viteExternalsPlugin(
+            {
+                'element-plus/dist/index.css': 'ElementPlusCss'
+            },
+            {
+                disableInServe: true
+            }
+        ),
         ViteAliases(),
     ],
 })

@@ -1,5 +1,5 @@
 <template>
-    <el-card v-for="website in websiteData" :key="website['序号']" class="card">
+    <el-card v-for="website in data" :key="website['序号']" class="card">
         <template #header>
             <div class="card-header">
                 <span>{{ website['名称'] }}</span>
@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 defineProps<{
-    websiteData?: {
+    data?: {
         "序号": string,
         "名称": string,
         "标签": string,

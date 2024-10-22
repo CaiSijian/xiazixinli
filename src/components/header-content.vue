@@ -30,12 +30,9 @@
 import { ref } from 'vue'
 import logoURL from '~/assets/images/logo.svg'
 import menuURL from '~/assets/images/menu.svg'
+import { menu } from '~/router'
 /* 刷新页面的时候，激活选项卡 */
-const activeIndex = ref(location.href.match(/(?<=#).*\/?/)?.[0])
-const menu: { [key: string]: string } = {
-    '心理资源': '/resource',
-    '我要反馈': '/feedback',
-}
+const activeIndex = ref(location.href.match(/(?<=#).*\/?/)?.[0] ?? '/')
 </script>
 
 <style scoped lang="less">

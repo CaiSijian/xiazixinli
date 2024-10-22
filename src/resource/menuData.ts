@@ -8,7 +8,7 @@ import websiteURL from '~/assets/images/website.svg'
 // const websiteTags = new Set(['全部', ...websites.map((obj) => obj['标签'].split('|')).flat(Infinity)])
 // console.log(Array.from(websiteTags))
 export { default as questionMarkURL } from '~/assets/images/question-mark.svg'
-export const menu = {
+export const menus = {
     '心理热线': {
         disabled: false,
         caption: hotlineCaption,
